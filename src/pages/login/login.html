@@ -6,13 +6,43 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Login</ion-title>
+  <ion-navbar color='primary'>
+    <ion-title>Teachers' Guide</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-card class="card">
+    <ion-card-header class="login-header">Login</ion-card-header>
+    <ion-card-content>
+      <form>
+        <ion-list>
+
+          <ion-item>
+              <ion-label color="primary" floating>Email:</ion-label>
+              <ion-input type="email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label color="primary" floating>Password:</ion-label>
+              <ion-input type="password"></ion-input>
+          </ion-item> 
+
+        </ion-list>
+        <div padding>
+          <button full fab ion-button type="submit">Login</button>
+        </div>
+        <div padding>
+          <p>
+            Have no account?
+            <button ion-button (click)="goToSignUp()" style="text-transform:none">Signup</button>
+          </p>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
