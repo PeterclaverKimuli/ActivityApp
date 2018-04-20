@@ -33,7 +33,7 @@ export class LoginPage {
   }
 
   loginOldUser(value:{email:string, password:string}){
-    this.userSettings.olduser(value.email).then((values) => {
+    this.userSettings.oldUser(value.email).then((values) => {
       this.pass = values
       if(this.pass === value.password) {
         this.navCtrl.push(HomePage)

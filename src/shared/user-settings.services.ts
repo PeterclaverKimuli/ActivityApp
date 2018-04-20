@@ -13,7 +13,7 @@ export class UserSettings{
         this.storage.set(value.email, values)
     }
 
-    olduser(email){
+    oldUser(email){
         return this.storage.get(email).then(
             (values) => {
                 this.pass.push(values.password)
