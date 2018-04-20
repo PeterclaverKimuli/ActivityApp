@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Signup</ion-title>
+    <ion-title>Teacher's guide</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,35 +18,35 @@
       <ion-card class="card">
         <ion-card-header class="login-header">Signup</ion-card-header>
         <ion-card-content>
-          <form>
+          <form (ngSubmit)="registerNewUser(f.value)" #f="ngForm">
             <ion-list>
     
               <ion-item>
                   <ion-label color="primary" floating>Email:</ion-label>
-                  <ion-input type="email"></ion-input>
+                  <ion-input type="email" name="email" ngModel required></ion-input>
               </ion-item>
     
               <ion-item>
                   <ion-label color="primary" floating>Password:</ion-label>
-                  <ion-input type="password"></ion-input>
+                  <ion-input type="password" name="password" ngModel required></ion-input>
               </ion-item>
     
               <ion-item>
                   <ion-label color="primary" floating>Password:</ion-label>
-                  <ion-input type="password"></ion-input>
+                  <ion-input type="password" name="password1" ngModel required></ion-input>
               </ion-item> 
     
             </ion-list>
             <div padding>
-              <button full ion-button type="submit">Submit</button>
-            </div>
-            <div padding>
-              <p>
-                Already have an account?
-                <button ion-button (click)="goToLogin()" style="text-transform:none">Login</button>
-              </p>
+              <button full ion-button type="submit" [disabled]="!f.valid">Submit</button>
             </div>
           </form>
+          <div padding>
+            <p>
+              Already have an account?
+              <button ion-button (click)="goToLogin()" style="text-transform:none">Login</button>
+            </p>
+          </div>
         </ion-card-content>
       </ion-card>
 

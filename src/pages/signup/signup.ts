@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, AlertController, NavController, NavParams } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
-
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {HomePage} from '../home/home';
+import {UserSettings} from '../../shared/shared';
 
 @IonicPage()
 @Component({
@@ -17,15 +12,68 @@ import { LoginPage } from '../login/login';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private userSettings: UserSettings,
+              private alertController: AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
 
+  registerNewUser(value:{email:string, password:string, password1:string}){
+
+    var atpos = value.email.indexOf('@')
+    var dotpos = value.email.lastIndexOf('.')
+
+    if(value.password!==value.password1){
+      let confirm = this.alertController.create({
+        title: 'Unmatched Passwords',
+        message: 'The passwords do not match.',
+        buttons: [
+          {
+            text: 'OK'
+          }
+        ]
+      })
+      confirm.present()
+    }
+
+    else if(atpos<1 || (dotpos-atpos)<2){
+      let confirm = this.alertController.create({
+        title: 'Invalid Email',
+        message: 'Please enter a valid email address',
+        buttons: [
+          {
+            text: 'OK'
+          }
+        ]
+      })
+      confirm.present()
+    }
+    
+    else if(value.password.length<5){
+      let confirm = this.alertController.create({
+        title: 'Weak Password',
+        message: 'The password should have 5 or more characters.',
+        buttons: [
+          {
+            text: 'OK'
+          }
+        ]
+      })
+      confirm.present()
+    }
+
+    else{
+      this.userSettings.newUser(value)
+      this.navCtrl.push(HomePage)
+    }
+    }
+
   goToLogin(){
-    this.navCtrl.push(LoginPage)
+    this.navCtrl.pop()
   }
 
 }

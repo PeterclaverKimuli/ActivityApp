@@ -18,30 +18,30 @@
   <ion-card class="card">
     <ion-card-header class="login-header">Login</ion-card-header>
     <ion-card-content>
-      <form>
+      <form (ngSubmit)="loginOldUser(f.value)" #f="ngForm">
         <ion-list>
 
           <ion-item>
               <ion-label color="primary" floating>Email:</ion-label>
-              <ion-input type="email"></ion-input>
+              <ion-input type="email" name="email" ngModel required></ion-input>
           </ion-item>
 
           <ion-item>
               <ion-label color="primary" floating>Password:</ion-label>
-              <ion-input type="password"></ion-input>
+              <ion-input type="password" name="password" ngModel required></ion-input>
           </ion-item> 
 
         </ion-list>
         <div padding>
-          <button full fab ion-button type="submit">Login</button>
-        </div>
-        <div padding>
-          <p>
-            Have no account?
-            <button ion-button (click)="goToSignUp()" style="text-transform:none">Signup</button>
-          </p>
+          <button full ion-button type="submit" [disabled]="!f.valid">Login</button>
         </div>
       </form>
+      <div padding>
+        <p>
+          Have no account?
+          <button ion-button (click)="goToSignUp()" style="text-transform:none">Signup</button>
+        </p>
+      </div>
     </ion-card-content>
   </ion-card>
 
