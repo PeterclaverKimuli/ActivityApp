@@ -21,6 +21,7 @@ export class LoginPage {
 
   pass:any
   item:any
+  submitted = false
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -36,12 +37,13 @@ export class LoginPage {
     this.userSettings.oldUser(value.email).then((values) => {
       this.pass = values
       if(this.pass === value.password) {
-        this.navCtrl.push(HomePage)
+        this.navCtrl.push(HomePage);
+        return true
       }
       else{
         let confirm = this.alertController.create({
-          title: 'Wrong Password',
-          message: 'Please input a correct password.',
+          title: 'Wrong informaton',
+          message: 'The information is wrong. Please check either your email or password.',
           buttons: [
             {
               text: 'OK'

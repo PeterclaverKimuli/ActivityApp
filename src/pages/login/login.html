@@ -18,17 +18,17 @@
   <ion-card class="card">
     <ion-card-header class="login-header">Login</ion-card-header>
     <ion-card-content>
-      <form (ngSubmit)="loginOldUser(f.value)" #f="ngForm">
+      <form (ngSubmit)="loginOldUser(f.value);f.reset()" #f="ngForm">
         <ion-list>
 
           <ion-item>
               <ion-label color="primary" floating>Email:</ion-label>
-              <ion-input type="email" name="email" ngModel required></ion-input>
+              <ion-input type="email" name="email" ngModel required clearInput></ion-input>
           </ion-item>
 
           <ion-item>
               <ion-label color="primary" floating>Password:</ion-label>
-              <ion-input type="password" name="password" ngModel required></ion-input>
+              <ion-input type="password" name="password" ngModel required clearInput></ion-input>
           </ion-item> 
 
         </ion-list>

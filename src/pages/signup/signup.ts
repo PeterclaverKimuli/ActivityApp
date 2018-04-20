@@ -67,8 +67,24 @@ export class SignupPage {
     }
 
     else{
-      this.userSettings.newUser(value)
-      this.navCtrl.push(HomePage)
+      this.userSettings.newUser(value).then((user) =>{
+        if(user===false){
+          let confirm = this.alertController.create({
+            title: 'Duplicate Email',
+            message: 'The Email address has already been used.',
+            buttons: [
+              {
+                text: 'OK'
+              }
+            ]
+          })
+          confirm.present()
+        }
+        else{
+          this.navCtrl.push(HomePage)
+        }
+      })
+      
     }
     }
 
