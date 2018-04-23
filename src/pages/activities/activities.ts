@@ -29,7 +29,7 @@ export class ActivitiesPage {
 
   makeActivity(value:{activity:string}){
     this.userSettings.addActivity(value.activity)
-    this.navCtrl.push(HomePage)
+    this.navCtrl.pop();
   }
 
 }

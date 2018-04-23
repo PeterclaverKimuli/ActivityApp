@@ -7,6 +7,7 @@ export class UserSettings{
     pass = []
     keys = []
     activities: any[] = []
+    boy = {}
     constructor(private storage: Storage){}
 
     newUser(value:{email:string, password:string, password1:string}){
@@ -44,11 +45,11 @@ export class UserSettings{
     }
 
     addActivity(activity){
-        this.activities.push()
+        this.activities.push(activity)
     }
 
     getActivity(){
-        return this.activities.slice();
+        return this.activities
     }
 }
 

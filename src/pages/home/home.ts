@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {ActivitiesPage} from '../activities/activities'
+import {UserSettings} from '../../shared/shared'
 
 /**
  * Generated class for the HomePage page.
@@ -18,14 +19,19 @@ import {ActivitiesPage} from '../activities/activities'
 export class HomePage {
   
   user: any
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  activities: any[] = []
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private userSettings:UserSettings) {
     this.user = this.navParams.data
     console.log("***navParams: ", this.user)
   }
 
   ionViewDidLoad() {
     this.user = this.navParams.data
+    this.activities = this.userSettings.getActivity()
     console.log('ionViewDidLoad HomePage')
+
   }
 
   makeNewActivities(){
