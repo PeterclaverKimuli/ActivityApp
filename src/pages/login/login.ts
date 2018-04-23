@@ -21,7 +21,6 @@ export class LoginPage {
 
   pass:any
   item:any
-  submitted = false
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -30,15 +29,15 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage')
+    console.log('ionViewDidLoad LoginPage');
   }
 
-  loginOldUser(value:{email:string, password:string}){
+  loginOldUser($event, value:{email:string, password:string}){
     this.userSettings.oldUser(value.email).then((values) => {
       this.pass = values
       if(this.pass === value.password) {
-        this.navCtrl.push(HomePage);
-        return true
+        let item = {email:value.email, password:value.password}
+        this.navCtrl.push(HomePage, item);
       }
       else{
         let confirm = this.alertController.create({

@@ -16,9 +16,12 @@
 <ion-content padding>
     
   <ion-card class="card">
-    <ion-card-header class="login-header">Signup</ion-card-header>
+    <ion-card-header class="login-header">
+      <ion-icon name="log-in"></ion-icon>
+      Signup
+    </ion-card-header>
     <ion-card-content>
-      <form (ngSubmit)="registerNewUser(f.value);f.reset()" #f="ngForm">
+      <form (ngSubmit)="registerNewUser($event, f.value)" #f="ngForm">
         <ion-list>
 
           <ion-item>

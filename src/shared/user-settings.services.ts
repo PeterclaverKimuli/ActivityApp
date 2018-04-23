@@ -6,6 +6,7 @@ export class UserSettings{
 
     pass = []
     keys = []
+    
     constructor(private storage: Storage){}
 
     newUser(value:{email:string, password:string, password1:string}){

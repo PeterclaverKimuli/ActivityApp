@@ -19,10 +19,10 @@ export class SignupPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+    console.log('ionViewDidLoad SignupPage')
   }
 
-  registerNewUser(value:{email:string, password:string, password1:string}){
+  registerNewUser($event, value:{email:string, password:string, password1:string}){
 
     var atpos = value.email.indexOf('@')
     var dotpos = value.email.lastIndexOf('.')
@@ -81,7 +81,8 @@ export class SignupPage {
           confirm.present()
         }
         else{
-          this.navCtrl.push(HomePage)
+          let item = {email:value.email, password:value.password}
+          this.navCtrl.push(HomePage, item)
         }
       })
       
