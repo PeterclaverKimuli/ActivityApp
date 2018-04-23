@@ -20,7 +20,7 @@ export class HomePage {
   user: any
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.user = this.navParams.data
-    console.log("***navParams: ", this.user);
+    console.log("***navParams: ", this.user)
   }
 
   ionViewDidLoad() {

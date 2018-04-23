@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import {UserSettings} from '../../shared/shared'
+import {HomePage} from '../home/home'
+
 /**
  * Generated class for the ActivitiesPage page.
  *
@@ -15,11 +18,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ActivitiesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private userSettings: UserSettings) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ActivitiesPage');
+    console.log('ionViewDidLoad ActivitiesPage')
+  }
+
+  makeActivity(value:{activity:string}){
+    this.userSettings.addActivity(value.activity)
+    this.navCtrl.push(HomePage)
   }
 
 }

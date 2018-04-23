@@ -6,13 +6,25 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Activities</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Add Activities</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <form (ngSubmit)='makeActivity(f.value)' #f='ngForm'>
+    <ion-list>
 
+      <ion-item>
+        <ion-label color='primary' floating>Activity's name:</ion-label>
+        <ion-input name='activity' type="text" ngModel required clearInput></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <div padding>
+      <button full ion-button type="submit" [disabled]="!f.valid">Add activity</button>
+    </div>
+  </form>
 </ion-content>
