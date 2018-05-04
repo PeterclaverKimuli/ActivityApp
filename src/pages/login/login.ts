@@ -12,7 +12,9 @@ import {UserSettings} from '../../shared/shared';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  // name: 'login'
+})
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -29,14 +31,14 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    console.log('ionViewDidLoad LoginPage')
   }
 
   loginOldUser($event, value:{email:string, password:string}){
     this.userSettings.oldUser(value.email).then((values) => {
-      this.pass = values
-      if(this.pass === value.password) {
+      if(values === value.password) {
         let item = {email:value.email, password:value.password}
+        // this.navCtrl.push('home', {'id':value.email});
         this.navCtrl.push(HomePage, item);
       }
       else{

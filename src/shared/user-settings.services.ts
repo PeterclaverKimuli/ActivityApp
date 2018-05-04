@@ -4,9 +4,10 @@ import {Storage} from '@ionic/storage'
 @Injectable()
 export class UserSettings{
 
-    pass = []
+    pass:string
     keys = []
     activities: any[] = []
+    id:{email:string, password:string[]}[] = []
     boy = {}
     constructor(private storage: Storage){}
 
@@ -36,20 +37,20 @@ export class UserSettings{
             if(this.inArray(email, values)===true){
                 return this.storage.get(email).then(
                     (value) => {
-                        this.pass.push(value.password)
-                        return this.pass[0]
+                        this.pass = value.password
+                        return this.pass
                     }
                 )
             }
         } )
     }
 
-    addActivity(activity){
-        this.activities.push(activity)
+    addID(id){
+        this.id.push(id)
     }
 
-    getActivity(){
-        return this.activities
+    getID(){
+        return this.id
     }
 }
 

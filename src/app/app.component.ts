@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -16,7 +16,7 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public app:App) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -46,6 +46,6 @@ export class MyApp {
   }
 
   logout(){
-    this.nav.popToRoot()
+    setTimeout(() => this.nav.popToRoot(), 1000);  
   }
 }
