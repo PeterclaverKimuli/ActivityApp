@@ -1,24 +1,17 @@
-<!--
-  Generated template for the ActivitiesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title></ion-title>
+    <ion-title>Create activities</ion-title>
   </ion-navbar>
 
 </ion-header>
-ghhhhgghhhg
 
 <ion-content padding>
   <form (ngSubmit)='makeActivity(f.value)' #f='ngForm'>
     <ion-list>
 
       <ion-item>
-        <ion-label color='primary' floating>Activity's name:</ion-label>
+        <ion-label color='primary' floating>Enter activity:</ion-label>
         <ion-input name='activity' type="text" ngModel required clearInput></ion-input>
       </ion-item>
 

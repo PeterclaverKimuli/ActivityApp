@@ -1,7 +1,7 @@
 <ion-menu persistent="true" [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Teachers' Guide</ion-title>
+      <ion-title>Activity Guide</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -9,7 +9,7 @@
     <ion-list>
       <ion-list-header>Navigate</ion-list-header>
       <button menuClose ion-item (click)="goToActivities()">Your Activities</button>
-      <button menuClose ion-item (click)="makeNewActivities()">Create New Activities</button>
+      <button menuClose ion-item (click)="makeNewActivities($event)">Create New Activities</button>
       <button menuClose ion-item (click)="logout()">
         <ion-icon name="log-out"></ion-icon>
         Logout

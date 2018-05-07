@@ -5,10 +5,10 @@ import {Storage} from '@ionic/storage'
 export class UserSettings{
 
     pass:string
-    keys = []
     activities: any[] = []
     id:{email:string, password:string[]}[] = []
-    boy = {}
+    loggedInUser:{email:string}
+
     constructor(private storage: Storage){}
 
     newUser(value:{email:string, password:string, password1:string}){
@@ -51,6 +51,14 @@ export class UserSettings{
 
     getID(){
         return this.id
+    }
+
+    addLoggedUser(value:{email:string}){
+        this.loggedInUser = value
+    }
+
+    getLoggedUser(){
+        return this.loggedInUser
     }
 }
 

@@ -1,11 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, App } from 'ionic-angular';
+import { Nav, Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { ActivitiesPage } from '../pages/activities/activities';
+import {UserSettings} from '../shared/shared'
 
 
 @Component({
@@ -15,8 +16,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
+  loggedInUser:{email:string}
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public app:App) {
+  constructor(public platform: Platform, 
+              public statusBar: StatusBar, 
+              public splashScreen: SplashScreen,
+              private userSettings: UserSettings) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -32,17 +37,12 @@ export class MyApp {
     });
   }
 
-  // openPage(page) {
-  //   // Reset the content nav to have just this page
-  //   // we wouldn't want the back button to show in this scenario
-  //   this.nav.setRoot(page.component);
-  // }
-
   goToActivities(){
   }
 
-  makeNewActivities(){
-    this.nav.push(ActivitiesPage)
+  makeNewActivities($event){
+    this.loggedInUser = this.userSettings.getLoggedUser()
+    this.nav.push(ActivitiesPage, this.loggedInUser)
   }
 
   logout(){

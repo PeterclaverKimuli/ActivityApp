@@ -1,13 +1,6 @@
-<!--
-  Generated template for the HomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
 <ion-header>
   <ion-navbar color = "primary" hideBackButton>
-    <ion-title>{{user.email}}</ion-title>
+    <ion-title>Home</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -22,12 +15,19 @@
 
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>Activities</ion-card-header>
+  <ion-card *ngIf="activities.length">
+    <ion-card-header class="card-header">Activities</ion-card-header>
     <ion-card-content>
       <ion-list>
         <ion-item *ngFor="let activity of activities">{{activity}}</ion-item>
       </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="!activities.length">
+    <ion-card-header class="card-header">No activities!</ion-card-header>
+    <ion-card-content>
+      <p>You have no activities. Press the <strong>+</strong> up in the corner to create activities.</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -18,10 +18,6 @@ export class SignupPage {
               private alertController: AlertController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage')
-  }
-
   registerNewUser($event, value:{email:string, password:string, password1:string}){
 
     var atpos = value.email.indexOf('@')
@@ -81,6 +77,7 @@ export class SignupPage {
           confirm.present()
         }
         else{
+          this.userSettings.addLoggedUser({email:value.email})
           let item = {email:value.email, password:value.password}
           this.navCtrl.push(HomePage, item)
         }
