@@ -6,7 +6,7 @@ import {IonicStorageModule} from '@ionic/storage'
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
-import {HomePage} from '../pages/home/home';
+import {HomePage} from '../pages/pages';
 import { ActivitiesPage } from '../pages/activities/activities';
 import {UserSettings} from '../shared/shared'
 
